@@ -3,6 +3,8 @@ import {
     App as InertiaApp,
     plugin as InertiaPlugin,
 } from "@inertiajs/inertia-vue3";
+
+import 'tailwindcss/tailwind.css';
 import AppLayout from "./layouts/AppLayout.vue";
 
 const app = document.getElementById("app");
