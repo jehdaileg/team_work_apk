@@ -5,3 +5,16 @@
 
     </div>
 </template>
+
+
+<script setup>
+
+Echo.channel("member")
+    .listen(".member.notify", (e) => {
+       console.log("Members Have been noified");
+
+    })
+
+
+
+</script>

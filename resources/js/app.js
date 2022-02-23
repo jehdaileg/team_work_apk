@@ -22,11 +22,6 @@ window.Echo = new Echo({
     disableStats: true,
 });
 
-window.Echo.channel('messageWelcome')
-           .listen('MessageWelcomeEvent', (e)=> {
-        console.log('Message received');
-    });
-
 
 const app = document.getElementById("app");
 

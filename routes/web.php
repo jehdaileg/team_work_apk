@@ -1,13 +1,13 @@
 <?php
 
-use App\Events\MessageWelcomeEvent;
+
+use App\Events\NotifyMember;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function(){
-   // return Inertia::render('Index');
-
-   event(new MessageWelcomeEvent("Hello Word"));
+  broadcast(new NotifyMember);
+  return Inertia::render('Index');
 });
 
 
