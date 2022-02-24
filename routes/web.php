@@ -17,7 +17,7 @@ Route::get('/users', function(){
     return Inertia::render('Users/Index');
 });
 
-/* for test */
+/* Just for test  */
 
 Route::post('/todo', function(){
     $data = request()->validate([
