@@ -1,7 +1,20 @@
 <template>
     <div>
 
-        <p class="text-3xl text-red-500">Hello Teams !!!</p>
+        <div class="flex justify-between items-center">
+                    <p class="text-3xl text-red-500">Hello Teams !!!</p>
+
+    <div class="text-xs space-y-px pt-1">
+        <p>{{ user.name }}</p>
+        <p>{{ user.lastname }}</p>
+
+        <Link href="/logout" as="button" method="post" class="p-1 bg-black text-white">Logout</Link>
+
+
+    </div>
+
+        </div>
+
 
         <div class=" rounded-lg">
 
@@ -27,13 +40,19 @@
 
 import {ref} from "vue";
 
-import { useForm } from "@inertiajs/inertia-vue3";
+import { Link, useForm, usePage } from "@inertiajs/inertia-vue3";
+
+const {
+    auth: { user },
+
+} = usePage().props.value;
+
 
 
 const props = defineProps({
     todos: Array,
-});
 
+});
 
 const todos = ref(props.todos)
 const form = useForm({
