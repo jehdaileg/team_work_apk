@@ -5,8 +5,8 @@
                     <p class="text-3xl text-red-500">Hello Teams !!!</p>
 
     <div class="text-xs space-y-px pt-1">
-        <p>{{ user.name }}</p>
-        <p>{{ user.lastname }}</p>
+        <p>Username</p>
+        <p>LastName User</p>
 
         <Link href="/logout" as="button" method="post" class="p-1 bg-black text-white">Logout</Link>
 
@@ -55,6 +55,7 @@ const props = defineProps({
 });
 
 const todos = ref(props.todos)
+
 const form = useForm({
     title: '',
 });
@@ -62,7 +63,8 @@ const form = useForm({
 
 Echo.channel("member")
     .listen(".member.notify", (e) => {
-      // console.log("Members Have been noified");
+
+        todos.value.unshift(e.todo)
         console.log(e.todo);
     })
 

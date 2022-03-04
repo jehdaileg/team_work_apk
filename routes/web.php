@@ -2,12 +2,22 @@
 
 
 use App\Models\Todo;
+use App\Models\User;
 use Inertia\Inertia;
 use App\Events\NotifyMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\Auth\AuthenticateUserController;
+
+/*
+$user = User::query()->firstOrCreate([
+    'email' => 'example@gmail.com',
+    'password' => '12345678',
+    'name' => 'example',
+    'lastname' => 'example',
+    'team_id' => 1
+]); */
 
 Route::get('/', function(){
  return Inertia::render('Index',[
@@ -30,8 +40,8 @@ Route::post('/todo', function(){
 
     $todo_created = Todo::query()->create($data);
 
-   // broadcast(new NotifyMember($todo_created));
-    NotifyMember::dispatch($todo_created);
+   broadcast(new NotifyMember($todo_created))->toOthers();
+
 
     return redirect()->to('/');
 });
